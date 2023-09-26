@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Live Weather</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+    <body class="weather-condition">
+        <div class="weatherInput">
+            <form class="weatherForm" action="/" method="post">
+                <label class="cityName" for="cityInput">City Name:</label>
+                <input class="textInput" id="cityInput" type="text" name="cityName">
+                <button class="btn" type="submit">Go!</button>
+            </form>
+        </div>
+        
+        <div id="weatherInfo">
+           
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function () {
+              $("form.weatherForm").submit(function (event) {
+                event.preventDefault(); // Prevent the form from submitting normally
+          
+                const cityName = $("#cityInput").val(); // Get the input value
+          
+                // Make a POST request to your server
+                $.post("/", { cityName }, function (data) {
+                  const weatherInfo = JSON.parse(data);
+          
+                  // Update the "weatherInfo" div using its ID
+                  $("#weatherInfo").html(`
+                    <h1 class="weatherDescription">The weather is currently ${weatherInfo.description}.</h1>
+                    <p><img class="weatherIcon" src="${weatherInfo.image}" alt="weather icon" </p>
+                    <p>Current details</p>
+                    
+                    <table class="weatherTable">
+                        <thead>
+                            <tr>
+                                <th class="table-header">Attribute</th>
+                                <th class="table-header">Value</th>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <td>Temperature</td>
+                            <td>${weatherInfo.temperature} degree celcius</td>
+                        </tr>
+                        <tr>
+                            <td>Feels like</td>
+                            <td>${weatherInfo.temp_feels_like} degree celcius</td>
+                        </tr>
+                        <tr>
+                            <td>Minimum temperature</td>
+                            <td>${weatherInfo.min_temp} degree celcius</td>
+                        </tr>
+                        <tr>
+                            <td>Maximum temperature</td>
+                            <td>${weatherInfo.max_temp} degree celcius</td>
+                        </tr>
+                        <tr>
+                            <td>Pressure</td>
+                            <td>${weatherInfo.pressure} hPa</td>
+                        </tr>
+                        <tr>
+                            <td>Humidity</td>
+                            <td>${weatherInfo.humidity} %</td>
+                        </tr>
+                        <tr>
+                            <td>Latitude</td>
+                            <td>${weatherInfo.latitude}</td>
+                        </tr>
+                        <tr>
+                            <td>Longitude</td>
+                            <td>${weatherInfo.longitude}</td>
+                        </tr>
+                        <tr>
+                            <td>Wind speed</td>
+                            <td>${weatherInfo.wind_speed} metre/sec</td>
+                        </tr>                  
+                    </table>
+                  `);
+                });
+              });
+            });
+          </script>
+    </body>
+</html>

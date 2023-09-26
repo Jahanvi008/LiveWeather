@@ -1,0 +1,85 @@
+html {
+    background: url('/images/bckimage.jpg') no-repeat center center fixed; 
+    background-size: cover;
+    height: 100%;
+}
+
+body {
+    overflow: auto;
+}
+
+.weatherInput {
+    margin: 10% auto;
+    width: 50%;
+    text-align: center;
+    background-size: cover;
+    padding: 30px 40px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+   
+
+.btn {
+    -webkit-border-radius: 28;
+    -moz-border-radius: 28;
+    border-radius: 28px;
+    font-family: Courier New;
+    color: #000000;
+    font-size: 31px;
+    background: #ededed;;
+    padding: 5px 10px; 
+    border: solid #e8ebed 0px; 
+  }
+  
+.btn:hover {
+    background: #8ea2ae;
+    text-decoration: none;
+}
+
+.cityName{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 40px;
+    font-style: oblique;
+}
+
+.textInput{
+  padding: 30;
+  height: 40px;
+  position: relative;
+  border-radius: 20px;
+  border: 1px solid #cdcdcd;
+  background-color: #ededed;
+  font-size: 25px;
+  font-family: 'Courier New', Courier, monospace;
+  text-align: center;
+}
+
+#weatherInfo{
+    background-color: rgba(255, 255, 255, 0.5);
+    font-size: 25px;
+    font-family: 'Courier New', Courier, monospace; 
+    text-align: center;
+    /* padding-bottom: 20px; */
+}
+
+.weatherDescription{
+    padding-top: 20px;
+}
+
+.weatherIcon{
+    height: 10%;
+    width: 10%;
+}
+
+.weatherTable {
+    width: 80%;
+    padding: 50px;
+    margin: 50px auto;
+    border-collapse: collapse;
+}
+
+.weatherTable th, .weatherTable td {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
